@@ -1,0 +1,43 @@
+Mario Cako
+CS451 HW1 (simpler_operations)
+9/24/2017
+
+
+This first homework was a very interesting project. I missed the first
+day of classes and had to read a lot to understand what was happening 
+in the class. It was very easy to setup the vm and the j-- compiler
+as the document was very straight forward. 
+
+Difficulties:
+I had some difficulties on reading the code in the beginning but started
+to get what was happening and things got easier. I had some problems when
+running the test because i did not know that there was a folder with java
+files that the professor had provided us with, and i thought that when 
+running the test on those And.java, Not.java etc, it was the files that
+we had to add on the test/pass/ directory. I was always getting a missing
+main method error and asked on piazza and realized that it need to be
+those files that the teacher provided for us. 
+	Second difficulty was finding the right code for those JBinaryExpression
+and JUnaryExpression files on the generate code method. Used the javap and
+solved it right away, of course after a couple of tries. 
+	Other difficulties was when writing the code i had to make sure
+everything was perfect because i was not using an IDE where they usually
+help you with the spelling or missing a letter or something like that
+so i had to check a lot of things make sure they were perfect. I'm in the
+process of setting up the Eclipse IDE and might use that on the next
+homework. 
+
+	Not much difficulties on the homework as there are a lot of files to
+modify and its mostly time consuming. I had some help from my friend
+Carlos Turcios. We go to school together and we always talk about the 
+same classes we take and he helped me a little on setting up my compiler
+and where to find those levels in the appendices in the book.
+
+Time used to work on the project, maybe around couple of hours a day
+for the last week and half. I thought i had something wrong in the
+beginning and had to delete everything and started over like 4 times.
+It's a very interesting project so far and i like, it just really
+pissed me off when something would not work and had to find the error,
+but once i would fix it, got very happy.
+
+

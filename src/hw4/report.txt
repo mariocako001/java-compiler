@@ -1,0 +1,180 @@
+1. Hours to complete the project: ... hours
+
+2. Provide a short description of how you approached each problem, issues you 
+   encountered, and how you resolved those issues.
+
+   Part I (Additions to JavaCC Scanner)
+
+   Problem 1 (Multiline Comment): ...
+
+   Problem 2 (Reserved Words): ...
+
+   Problem 3 (Operators): ...
+   
+   Problem 4 (Separators): ...
+
+   Problem 5 (Literals): ...
+
+   Part II (Additions to JavaCC Parser)
+   
+   Problem 6 (Double Basic Type): ...
+
+   Problem 7 (Operators): ...
+   
+   Problem 8 (Blocks): ...
+   
+   Problem 9 (Interface Type Declarations): ...
+
+   Problem 10 (Conditional Expression): ...
+
+   Problem 11 (For Statements): ...
+
+   Problem 12 (Exception Handlers): ...
+
+3. Did you receive help from anyone? List their names, status (classmate, 
+   CS451/651 grad, TA, other), and the nature of help received.
+
+   Name               Status       Help Received
+   ----               ------       -------------
+
+   ...                ...          ...
+
+4. List any other comments here. Feel free to provide any feedback on how
+   much you learned from doing the assignment, and whether you enjoyed
+   doing it.
+
+   ...
+
+
+
+///////////////////////////////////////////////////////////////
+Mario Cako
+cs451
+hw4
+11/19/2017
+
+
+
+Hours worked about 10 hours. Started on Sunday last day, trying
+to solve it all day. Not good, should have started earlier.
+
+
+Problem 1
+Multiline comment was a little confusing but managed to solve it
+by looking at the piazza and some websites for syntax and the
+grammar to come up with the right solution.
+
+Problem 2
+Just copied whatever I had on the other files like Token Info
+and when I compiled everything was fine.
+
+Problem 3 and 4
+It was simple for this part. Just had to look back
+at what I did on homework 2 for the names of the methods that
+we had built before, trying to call the right one. Had a problem
+with unary Plus instead of JPlusOp because it’s the case where
+it takes only one argument but figured it out.
+
+Problem 5 and 6
+Literals I had some problems and then I figured out that it needed
+two literal one for double and one for float so I did them separate.
+I then encountered a problem about the grammar, in some places I was
+looking for zero, one or more occurrences for a digit, where it was 
+supposed to be at least one occurrence then 0 or more. I think I 
+was getting an exception on the JMethodDeclaration I believe
+where I had an empty array, and trying to print from an empty one
+was throwing null pointer exception. So, I only had to add an if
+to check if array was empty or not and then everything was fine.
+Actually, it happened on problem 6. And for problem 6 alone was
+only like two places to add support for double.
+
+
+Problem 7
+In this part I had to look at the levels and the what category
+each of the operators was. By looking at the category, would
+search it in the j-- file and add support for it.
+I did the same things as what the parts where there and just
+added support for it. Had to add level 11 I believe for the 
+chain order of the levels otherwise it would not work on mine. 
+
+Problem 8
+This probably took me the most time, by this point it was late
+afternoon and working on the project for 7 hours straight 
+kind of lose concentration. But I managed to do this part by
+looking a piazza and some of the code that looked similar to
+it. I tried many different ways of solving it and I had problems
+with the indexing of the LCURLY. I thought the first LCURLY was
+seen by the LOOKAHEAD and that would throw me off. I knew that
+the grammar started with the LCURLY but thought the LOOKAHEAD
+took care of it. After I tried other way I got it to work. 
+
+
+Problem 9
+I have done most of the code for this, just again there is
+something happening on the LOOKAHEAD that might be throwing me
+off. Basically, you just split the classDeclaration to either
+class type of interface type. The methods are almost the same,
+and the grammar kind of too. But I’m still working on it trying
+to figure it out. If had worked a few days earlier, I would have
+finished it.
+(After the extension)
+I was able to finish this part, as i said I copied most
+of the code from the class type and modified it a little.
+One things that i was doing wrong, was not adding that 
+optional IMPLEMENTS in the classDeclaration. Once i did that
+everythings was fine.
+
+
+Problems 10, 11, 12
+Did not work on them as I had no time and started late. 
+(After the extension)
+
+Problem 10
+This was probably the easiest one of them all. You
+only needed to remember the order of the methods, the
+level, and then just save the lhs or the test expression
+and then the truePart and the falsePart and just return the
+right method.
+
+Problem 11
+This took me a while but it was exactly like the one
+in the Parser.java file. I referenced to it and got it
+working. I also had to add some methods in the statementExpression()
+because that was returning an invalid method and could not pass the 
+test. Once i added those, it worked. The only challanging
+part of this problem was how to separate the enhanced for loop
+with the regular one. Mainly i looked ahead for the COLON, and if
+i found that then it means is enhanced, otherwise it would fall into
+an or ( | ) and just continue with the regular one.
+
+
+Problem 12
+This problem was not that hard either. Started with the simplest one,
+like throw and throws because it was only a few lines of code to add.
+Although easy i ran into an empty array for JFormalParameter type
+but that was because i was initializing it to null. 
+For the try catch finally, i did some trial and error but was not
+hard. All you had to do was keep in mind that there are three blocks
+for each of the tokens try catch finally, and pass that into the method
+with the finally being optional and the catch having multiple catches,
+so mutliple blocks.
+
+ 
+
+I got a tiny help from Carlos Turcios, he is in our class.
+He told me to modify those JconstructorDeclaration, and
+JMethodDeclaration in the beginning of the project
+otherwise it would have ruined the whole project. Just modified
+the arguments for those.
+
+
+I like the class even though things seem to get harder and more
+time consuming. I like it because you work on it for hours and
+try to figure out what is happening and when you get the right
+answer is very rewarding. I also got a good grade on the test
+and probably will try to finish this homework even after the 
+deadline just so I know what it's happening on the last parts
+I did not finish.
+(After the extension)
+I was able to finish all of it by wednesday, so the extension
+really helped.

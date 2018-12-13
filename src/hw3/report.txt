@@ -1,0 +1,128 @@
+// Mario Cako
+// CS451 Compilers
+// 10/29/2017
+// Project 3
+
+This project was a little bit long. I did not think I would take this much
+time but I should have started earlier. I started the project during the
+last week and I only got to finish until part 5. I asked if we could
+get an extension but still waiting on the answer in piazza.
+I would say I worked on it about 5 hours a day , that was just one week 
+though.
+
+Problem 1 
+Double was just a few simple lines of code to add and just a class
+so that it supports it as a type. Very easy to do.
+
+Problem 2
+Operators was a little harder because we had to add a few levels
+to the for assignmenExpression which was not a hard thing to do.
+We had to keep track of those things because each level kind of 
+is dependent on the other level and need to be very careful
+about that.
+
+Problem 3
+Block was an interesting part of the project as it made
+me understand the order the grammar goes as in where 
+we have to see a static or parentheses and I had to look
+at some of the code that other methods had as they were 
+kind of similar.
+
+Problem 4
+Interface was a little harder, more things to modify and
+again, the order of where to see or have or mustBe was
+more clarified to me. It was kind of the same code as the
+classDeclaration with just a few changes but did not take
+that much time to figure out.
+
+Problem 5
+Conditional was interesting because i had to create 
+a separate abstract class that only had one class that
+would extend it and I did it that way so it is the same
+format and plus you learn more about the compiler and
+how it works.
+
+Problem 6
+I was able to finish 99 percent of this part and I’m only
+missing one thing to do. I took me a long time to figure 
+this one out as I tried different versions to solve it,
+and still was not able to figure it out. Then something
+I modified must have ruined my code and now its throwing me
+an exception. If I had 2 more days on it, I would probably 
+have finished it.
+(After the extension)
+So, I was able to finish this part. The only way for mine
+to work is that I had to add some things that I was missing.
+I had to add the instance of --pre, post++ expressions
+in the statementExpression() AST. After I did that, it all
+started to work. I got this part figured out thru piazza
+where someone else had the same issue.
+
+
+Problem 7 
+I did even start this one because I wanted to finish the 
+for statements first and then do this so it could work
+perfectly. 
+(After the extension)
+I was able to finish this part. I would say it was very
+easy compared to the For loop and I took very little time
+to figure out what was happening. Most of the code for the
+Throws was completely the same for the interface member
+and the member declaration so that was easy to do.
+It took a little time to get everything working
+but easier to implement then the for loop. 
+
+
+
+I did not receive any help from my friends but I would
+talk with some of the guys in class James Struga and
+Carlos Turcios about how to get started or any tips,
+plus the piazza might have had some helpful tips.
+
+
+
+I just wish I had started earlier because part 1-5 I did 
+them in like 2 days total and that is not 48 hours of working
+on it. Maybe just like 10 hours in total and got stuck on part 6
+for like 3 days more than 15 hours on it. But if I had an extension
+I would have probably finished it as I am very close to the end of it.
+(After the extension)
+I was able to finish it. Yay.
+
+
+
+
+
+
+1. Hours to complete the project: ... hours
+
+2. Provide a short description of how you approached each problem, issues you 
+   encountered, and how you resolved those issues.
+
+   Problem 1 (Double Basic Type): ...
+
+   Problem 2 (Operators): ...
+   
+   Problem 3 (Blocks): ...
+
+   Problem 4 (Interface Type Declaration): ...
+
+   Problem 5 (Conditional Expression): ...
+
+   Problem 6 (For Statements): ...
+
+   Problem 7 (Exception Handlers): ...
+
+3. Did you receive help from anyone? List their names, status (classmate, 
+   CS451/651 grad, TA, other), and the nature of help received.
+
+   Name               Status       Help Received
+   ----               ------       -------------
+
+   ...                ...          ...
+
+4. List any other comments here. Feel free to provide any feedback on how
+   much you learned from doing the assignment, and whether you enjoyed
+   doing it.
+
+   ...

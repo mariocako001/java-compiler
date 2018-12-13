@@ -1,0 +1,179 @@
+// A grammar for j--, suitable for parsing by recursive descent
+// Copyright 2013 Bill Campbell, Swami Iyer and Bahar Akbal-Delibas
+
+compilationUnit ::= [PACKAGE qualifiedIdentifier SEMI]
+                    {IMPORT  qualifiedIdentifier SEMI}
+                    {typeDeclaration} EOF 
+
+qualifiedIdentifier ::= IDENTIFIER {DOT IDENTIFIER}
+
+typeDeclaration ::= modifiers (classDeclaration | interfaceDeclaration)
+
+modifiers ::= {PUBLIC | PROTECTED | PRIVATE | STATIC | ABSTRACT}
+
+classDeclaration ::= CLASS IDENTIFIER 
+                       [EXTENDS qualifiedIdentifier]
+                       [implements qualifiedIdentifier {COMMA qualifiedIdentifier}] 
+                       classBody
+
+interfaceDeclaration ::= INTERFACE IDENTIFIER // cant be final
+                          [EXTENDS qualifiedIdentifier {COMMA qualifiedIdentifier}]
+                          interfaceBody
+
+classBody ::= LCURLY {STATIC block| block |modifiers memberDecl} RCURLY
+
+interfaceBody ::= LCURLY {modifiers interfaceMemberDecl} RCURLY
+
+interfaceMemberDecl :: (VOID | type ) IDENTIFIER // method
+                        formalParameters SEMI
+                        | type variableDeclarators SEMI // fields, must have inits
+
+memberDecl ::= /*IDENTIFIER            // constructor
+                 formalParameters block*/
+                 IDENTIFIER
+                  formalParameters
+                    [THROWS qualifiedIdentifier {COMMA qualifiedIdentifier}] block
+            /* | (VOID | type) IDENTIFIER  // method
+                 formalParameters
+                 (block | SEMI)*/
+             | (VOID | type) IDENTIFIER // method
+                  formalParameters
+                    [THROW qualifiedIdentifier {COMMA qualifiedIdentifier}]
+             | type variableDeclarators SEMI // field
+
+block ::= LCURLY {blockStatement} RCURLY 
+
+blockStatement ::= localVariableDeclarationStatement
+                 | statement
+
+statement ::= block
+            | IF parExpression statement [ELSE statement]
+            // for statement
+            | FOR LPAREN [forInit] SEMI [expression] SEMI [forUpdate] RPAREN statement
+            // enhanced for statement
+            | FOR LPAREN type IDENTIFIER COLON expression RPAREN statement
+            | WHILE parExpression statement 
+            | TRY block LCURLY CATCH (formalParameter) block RCURLY 
+                [FINALLY block] // must be present if no catches
+            | RETURN [expression] SEMI
+            | THROW expression SEMI
+            | SEMI 
+            | statementExpression SEMI
+
+
+forInit ::= statementExpression {COMMA statementExpression}
+            | [FINAL] type variableDeclarators
+block
+forUpdate ::= statementExpression {COMMA statementExpression}
+
+
+formalParameters ::= LPAREN 
+                       [formalParameter {COMMA formalParameter}]
+                     RPAREN
+block
+formalParameter ::= type IDENTIFIER
+
+parExpression ::= LPAREN expression RPAREN
+
+localVariableDeclarationStatement ::= type variableDeclarators SEMI
+
+variableDeclarators ::= variableDeclarator {COMMA variableDeclarator}
+
+variableDeclarator ::= IDENTIFIER [ASSIGN variableInitializer]
+                    
+variableInitializer ::= arrayInitializer | expression
+
+arrayInitializer ::= LCURLY 
+                       [variableInitializer {COMMA variableInitializer}]
+                     RCURLY 
+
+arguments ::= LPAREN [expression {COMMA expression}] RPAREN
+
+type ::= referenceType | basicType
+
+basicType ::= BOOLEAN | CHAR | INT | DOUBLE
+
+referenceType ::= basicType LBRACK RBRACK {LBRACK RBRACK}
+                | qualifiedIdentifier {LBRACK RBRACK}
+
+statementExpression ::= expression // but must have side-effect, eg i++
+
+expression ::= assignmentExpression
+
+// level 13
+assignmentExpression ::= conditionalExpression  // must be a valid lhs
+                           [(ASSIGN | PLUS_ASSIGN | MINUS_ASSIGN |
+                           STAR_ASSIGN | DIV_ASSIGN |
+                           REM_ASSIGN) assignmentExpression]
+
+// level 12
+conditionalExpression ::= conditionalOrExpression
+                          [TERNARY assignmentExpression : conditionalExpression]
+
+// level 11
+conditionalOrExpression ::= conditionalAndExpression {LOR conditionalAndExpression} 
+
+// level 10
+conditionalAndExpression ::= inclusiveOrExpression
+                               {LAND inclusiveOrExpression}
+
+inclusiveOrExpression ::= exclusiveOrExpression {OR exclusiveOrExpression} // level 9
+
+exclusiveOrExpression ::= andExpression{XOR andExpression} // level 8
+
+andExpression ::= equalityExpression{AND equalityExpression} // level 7
+
+equalityExpression ::= relationalExpression  // level 6
+                         {EQUAL relationalExpression}
+
+relationalExpression ::= additiveExpression       // level 5
+                           [(GT | LE) additiveExpression
+                           | INSTANCEOF referenceType]
+
+additiveExpression ::= multiplicativeExpression // level 3
+                         {(PLUS | MINUS) multiplicativeExpression}
+
+multiplicativeExpression ::= unaryExpression       // level 2
+                               {(STAR | DIV | REM | SHL | SHR
+								| LSHR ) unaryExpression}
+
+unaryExpression ::= INC unaryExpression  // level 1
+                  | MINUS unaryExpression
+                  | DEC unaryExpression
+				          | PLUS unaryExpression
+                  | simpleUnaryExpression
+
+simpleUnaryExpression ::= NOT unaryExpression 
+						| LNOT unaryExpression
+                        | LPAREN basicType RPAREN unaryExpression //casted
+                        | LPAREN // casted               
+                            referenceType
+                          RPAREN simpleUnaryExpression
+                        | postfixExpression
+						 
+
+postfixExpression ::= primary {selector} {DEC}
+
+selector ::= DOT qualifiedIdentifier [arguments]
+           | LBRACK expression RBRACK
+
+primary ::= parExpression
+          | THIS [arguments]
+          | SUPER ( arguments 
+                  | DOT IDENTIFIER [arguments] 
+                  )
+          | literal
+          | NEW creator
+          | qualifiedIdentifier [arguments]
+
+creator ::= (basicType | qualifiedIdentifier) 
+              ( arguments
+              | LBRACK RBRACK {LBRACK RBRACK} [arrayInitializer]
+              | newArrayDeclarator
+              )
+
+newArrayDeclarator ::= LBRACK expression RBRACK 
+                         {LBRACK expression RBRACK} {LBRACK RBRACK}
+
+literal ::= INT_LITERAL | CHAR_LITERAL | STRING_LITERAL |LONG_LITERAL |
+          | DOUBLE_LITERAL | FLOAT_LITERAL | TRUE       | FALSE       | NULL

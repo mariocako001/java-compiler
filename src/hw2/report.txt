@@ -1,0 +1,56 @@
+Mario Cako
+CS451
+hw2 scanning
+10/08/2017
+
+It took me a while to do this homework and i worked at it for a few hours
+everyday. The first week i didn't even touch it, because i was working
+on another class that had a project due the end of the first week
+but i managed to finish it in time.
+
+The way i approached this problem was by thinking of it during
+the first week. I would create some cases or draw something
+so that it would help me scan the tokens. When i started working
+on the multi lines was very easy, tried a few scenarios until i 
+finished that part.
+
+For reserved words it took a little longer as i started the homework
+a few times because i could not find the a missing char in one of the 
+two files. The last time i did it, i deleted every thing and copied the
+solution i had for hw1 and started from there, and once i added to 
+scanner file i would add it to token file until i got it right.
+
+Operators happened the same thing, although i dont think this
+part had a lot of new additions because some were from hw1. Also
+for Separators was the same thing. Did not take time at all.
+
+The hardest part was the Literals where i had to think of a lot of
+scenarios about this part. It was a little difficult to understand
+some the parentheses that explained the order of the numbers or the 
+special chars like e,f,d etc. The way i figured it tout was by using 
+Sublime software, a simple text editor where it would highlight the
+text with a color if it was entered correctly. So i tried different
+combinations that the syntax had on the pdf of the homework and they
+would not work or i would compile with javac another file and i would 
+test it. When i threw me an error, i found out which were the right 
+scenarios and went from there on. Some of it was easy because the part
+after the dot was pretty much the same and i only had to copy that part
+when the number started with 0, or 0-9 or '.' . 
+I also added some more cases that i think could happen like if you enter
+0.' '; or with multiple spaces it would return a double token.
+I did what i could with it and it worked fine. I also did a lot of testing
+when compiling the scanner and token info file until they resulted in the 
+right token response. 
+
+I worked with Carlos Turcious again, as we go to school together with my car
+as he lives near me. We dont share code but we talk about different ideas.
+He helped me a little on the multi comment line and i helped him on the cases 
+for literals. He is in the same class with us.
+
+Other comments: 
+I'm liking the class so far. I tried to do the assignment with Eclipse and
+it worked in the beggining but when i tried the code in the VM it did not
+work so i have decided to just do it on the VM. I have a tower at home that 
+work much faster and just gonna do it there from now on.
+
+
